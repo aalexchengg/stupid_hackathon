@@ -23,7 +23,7 @@ def run_script_by_id(script_id):
         '1': 'allin.py',
         '2': 'jobapp.py',
         '3': 'chaewon.py',
-        '4': 'jobapp.py',
+        '4': 'doomscroll.py',
     }
 
     script_name = script_map.get(script_id)

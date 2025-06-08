@@ -27,7 +27,7 @@ def stop_audio(proc):
         os.kill(proc.pid, signal.SIGTERM)
 
 def setup_and_shake():
-    audio_proc = play_audio_async("/Users/anthony/Desktop/2025_cs_projects/stupid/stupid_hackathon/static/awwhellnah.mp3")  # replace with your file path
+    audio_proc = play_audio_async(os.path.abspath("static/awwhellnah.mp3"))  # replace with your file path
 
     print("[INFO] Starting initial positioning of servos 1–5, and 6 to 500")
     servos_init = [

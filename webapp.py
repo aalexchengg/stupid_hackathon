@@ -3,18 +3,25 @@ import subprocess
 import os
 
 app = Flask(__name__)
-
+scripts = []
 
 def run_script(script_name):
     try:
-        subprocess.run(['python', f'scripts/{script_name}'], check=True)
+        scripts.append(subprocess.Popen(['python', f'scripts/{script_name}']))
     except subprocess.CalledProcessError as e:
         print(f"Error running {script_name}: {e}")
 
+
+@app.route('/stop_script', methods=['POST'])
+def stop_script():
+    while(scripts):
+        curr = scripts.pop()
+        curr.terminate()
+    return redirect(url_for('index'))
+
 @app.route('/')
 def index():
-
-    # subprocess.Popen(['python', 'listen.py'])
+    subprocess.Popen(['python', 'listen.py'])
     return render_template('index.html')
 
 @app.route('/run/<script_id>', methods=['POST'])

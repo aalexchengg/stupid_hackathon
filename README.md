@@ -6,6 +6,7 @@ first create conda environment
 
 ```
 conda create -n stupid python==3.11
+conda activate stupid
 ```
 
 then install from pip

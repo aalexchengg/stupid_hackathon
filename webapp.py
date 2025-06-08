@@ -1,16 +1,32 @@
-from flask import Flask, render_template, jsonify, url_for
+from flask import Flask, render_template, redirect, url_for
+import subprocess
 
 app = Flask(__name__)
 
+def run_script(script_name):
+    try:
+        subprocess.run(['python', f'scripts/{script_name}'], check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Error running {script_name}: {e}")
+
 @app.route('/')
 def index():
-    return render_template('template.html')
+    return render_template('index.html')
 
-@app.route('/run-after-countdown', methods=['POST'])
-def run_after_countdown():
-    print("Countdown finished — running backend Python code.")
-    # You can put any logic here (e.g., saving data, triggering a task, etc.)
-    return jsonify({"redirect_url": url_for('index')})
+@app.route('/run/<script_id>', methods=['POST'])
+def run_script_by_id(script_id):
+    script_map = {
+        '1': 'allin.py',
+        '2': 'jobapp.py',
+        '3': 'chaewon.py',
+        '4': 'jobapp.py',
+    }
+
+    script_name = script_map.get(script_id)
+    if script_name:
+        run_script(script_name)
+
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,6 +1,7 @@
 from xarm import Controller, Servo
 import time
 import webbrowser
+import random
 
 arm = Controller('USB')
 
@@ -23,15 +24,19 @@ range_map = {
 
 opened = 0
 closed = 700
+standard_deviation = 150
 
 current_positions = {i: 500 for i in range(1, 7)}
+
+def rand_direction():
+    return random.choice([1, -1])
 
 def clamp(joint, pos):
     lo, hi = range_map[joint]
     return max(lo, min(pos, hi))
 
-def move_all(joint_positions, duration=2000):
-    servos = [Servo(joint, pos) for joint, pos in joint_positions.items()]
+def move_all(joint_positions, duration=200):
+    servos = [Servo(joint, random.uniform(pos, standard_deviation) * rand_direction()) for joint, pos in joint_positions.items()]
     arm.setPosition(servos, duration=duration, wait=True)
     time.sleep(1)
 

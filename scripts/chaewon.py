@@ -64,7 +64,7 @@ def move_joint(joint_number, position, duration=1000):
     time.sleep(0.5)
     print(f"[INFO] Joint {joint_number} now at {new}.")
 
-def set_claw(position, duration=1000):
+def set_claw(position, duration=200):
     target = clamp(claw, position)
     move_joint(claw, target, duration)
 

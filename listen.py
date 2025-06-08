@@ -19,7 +19,7 @@ def listen_and_scream():
 
             if "job" in text:
                 print("Keyword detected! SCREAMING!")
-                playsound('static/no.mp3')
+                playsound('static/no_short.mp3')
 
         except sr.UnknownValueError:
             print("Couldn't understand audio.")

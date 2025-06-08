@@ -109,8 +109,10 @@ bottom = base
 
 if __name__ == "__main__":
     webbrowser.open_new_tab("https://www.youtube.com/watch?v=v7LpKUBu5wE")
+    print("here")
     t_end = time.time() + 200
     while(time.time() < t_end):
+        print("running...")
         reset()
         bend_and_pick()
         return_home()

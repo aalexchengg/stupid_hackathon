@@ -1,7 +1,9 @@
 from flask import Flask, render_template, redirect, url_for
 import subprocess
+import os
 
 app = Flask(__name__)
+
 
 def run_script(script_name):
     try:
@@ -11,6 +13,8 @@ def run_script(script_name):
 
 @app.route('/')
 def index():
+
+    subprocess.Popen(['python', 'listen.py'])
     return render_template('index.html')
 
 @app.route('/run/<script_id>', methods=['POST'])

@@ -2,8 +2,12 @@
 
 # setup instructions
 
-first create conda environment
+install portaudio for speech recognition
+```
+brew install portaudio
+```
 
+first create conda environment
 ```
 conda create -n stupid python==3.11
 conda activate stupid

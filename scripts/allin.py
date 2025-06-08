@@ -4,6 +4,7 @@ import time
 arm = Controller('USB')
 
 def move_sequence():
+    arm.setPosition([Servo(i, 500) for i in range(1, 7)], duration=1000, wait = True)
     print("[INFO] Step 1: Setting servo 5 to 380, servo 4 to 0, servo 1 to 0...")
     s1 = Servo(1, 0)
     s4 = Servo(4, 0)

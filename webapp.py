@@ -21,7 +21,7 @@ def stop_script():
 
 @app.route('/')
 def index():
-    subprocess.Popen(['python', 'listen.py'])
+    # subprocess.Popen(['python', 'listen.py'])
     return render_template('index.html')
 
 @app.route('/run/<script_id>', methods=['POST'])

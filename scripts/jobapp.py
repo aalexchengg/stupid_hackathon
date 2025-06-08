@@ -63,4 +63,12 @@ def setup_and_shake():
     print("[INFO] Returned to home.")
 
 if __name__ == "__main__":
+    s1 = Servo(1, 500)
+    s2 = Servo(2, 500)
+    s3 = Servo(3, 500)
+    s4 = Servo(4, 500)
+    s5 = Servo(5, 500)
+    s6 = Servo(6, 500)
+    arm.setPosition([s1, s2, s3, s4, s5, s6], duration=1000, wait=True)
+    
     setup_and_shake()

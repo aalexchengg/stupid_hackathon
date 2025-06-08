@@ -18,7 +18,7 @@ def run_script_by_id(script_id):
     script_map = {
         '1': 'allin.py',
         '2': 'jobapp.py',
-        '3': 'allin.py',
+        '3': 'chaewon.py',
         '4': 'jobapp.py',
     }
 
